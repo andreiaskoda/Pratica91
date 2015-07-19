@@ -22,15 +22,18 @@ public class Pratica91 {
         System.out.println("Número de processadores: " + processors);
         
         // Memória total em MB
-        long totalMemory = Runtime.getRuntime().totalMemory()/1000000;
+        double totalMemory = Runtime.getRuntime().totalMemory();
+        totalMemory /= 1000000;
         System.out.println("Memória total: " + totalMemory + " MB");
         
         // Memória livre em MB
-        long freeMemory = (Runtime.getRuntime().freeMemory())/1000000;
+        double freeMemory = (Runtime.getRuntime().freeMemory());
+        freeMemory /= 1000000;
         System.out.println("Memória livre: " + freeMemory + " MB");
         
         // Memória máxima em MB
-        long maxMemory = (Runtime.getRuntime().maxMemory())/1000000;
+        double maxMemory = (Runtime.getRuntime().maxMemory());
+        maxMemory /= 1000000;
         System.out.println("Memória máxima: " + maxMemory + " MB");
     }
 }
