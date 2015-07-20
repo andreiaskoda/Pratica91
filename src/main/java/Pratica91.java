@@ -12,28 +12,25 @@ public class Pratica91 {
         operacional, número de processadores, memória total em MB,
         memória livre em MB, máxima quantidade de memória usada pela
         máquina virtual em MB. */
-        
+        Runtime rt = Runtime.getRuntime();
+
         // Nome do sistema operacional
-        String os = System.getProperty("os.name");
-        System.out.println("Sistema operacional: " + os);
+        System.out.println("Sistema operacional: " + System.getProperty("os.name"));
         
         // Número de processadores
-        int processors = Runtime.getRuntime().availableProcessors();
-        System.out.println("Número de processadores: " + processors);
+        System.out.println("Número de processadores: " + rt.availableProcessors());
         
-        // Memória total em MB
-        double totalMemory = Runtime.getRuntime().totalMemory();
-        totalMemory /= 1000000;
-        System.out.println("Memória total: " + totalMemory + " MB");
+        // Memória total
+        System.out.println("Memória total: " + rt.totalMemory()/1048576);
         
-        // Memória livre em MB
-        double freeMemory = (Runtime.getRuntime().freeMemory());
-        freeMemory /= 1000000;
-        System.out.println("Memória livre: " + freeMemory + " MB");
+        // Memória livre
+        if(rt.freeMemory()%1048576 > 524288)
+            System.out.println("Memória livre: " + ((rt.freeMemory()/1048576) + 1));
         
-        // Memória máxima em MB
-        double maxMemory = (Runtime.getRuntime().maxMemory());
-        maxMemory /= 1000000;
-        System.out.println("Memória máxima: " + maxMemory + " MB");
+        else
+            System.out.println("Memória livre: " + rt.freeMemory()/1048576);
+                
+        // Memória máxima
+        System.out.println("Memória máxima: " + rt.maxMemory()/1048576);
     }
 }
